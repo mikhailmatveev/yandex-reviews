@@ -1,0 +1,25 @@
+{
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/server.ts",
+        "start": "tsx src/server.ts",
+        "parse:url": "tsx src/parse-url.ts",
+        "format": "prettier --write \"src/**/*.{js,ts}\"",
+        "format:check": "prettier --check \"src/**/*.{js,ts}\"",
+        "lint": "eslint --config ../eslint.config.js \"src/**/*.{js,ts}\"",
+        "lint:fix": "npm run lint -- --fix",
+        "typecheck": "tsc"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "patchright": "^1.63.0",
+        "playwright": "^1.58.0",
+        "zod": "^4.1.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^24.0.0",
+        "tsx": "^4.0.0",
+        "typescript": "^5.0.0"
+    }
+}

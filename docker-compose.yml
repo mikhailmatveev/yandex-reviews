@@ -1,0 +1,23 @@
+services:
+  app:
+    # Laravel / PHP-FPM
+    environment:
+      PARSER_URL: http://parser:3000
+      PARSER_TOKEN: ${PARSER_TOKEN}
+
+  queue:
+    # Тот же Laravel-образ
+    command: php artisan queue:work --tries=3 --timeout=300
+    environment:
+      PARSER_URL: http://parser:3000
+      PARSER_TOKEN: ${PARSER_TOKEN}
+
+  parser:
+    build:
+      context: ./parser
+    environment:
+      PORT: 3000
+      PARSER_TOKEN: ${PARSER_TOKEN}
+      CALLBACK_URL: http://app/api/internal/parser-progress
+    expose:
+      - "3000"
